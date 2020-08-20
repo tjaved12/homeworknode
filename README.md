@@ -17,4 +17,4 @@ homeworknode();
 
 ## License
 
-MIT © [Tahmeena](https://github.com/tjaved12/homeworknode)
+ISC © [Tahmeena](https://github.com/tjaved12/homeworknode)
