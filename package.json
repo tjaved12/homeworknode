@@ -1,0 +1,24 @@
+{
+  "name": "homeworknode",
+  "version": "1.0.0",
+  "description": "readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"yayy\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjaved12/homeworknode.git"
+  },
+  "keywords": [
+    "readme",
+    "node",
+    "npm"
+  ],
+  "author": "Tahmeena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tjaved12/homeworknode/issues"
+  },
+  "homepage": "https://github.com/tjaved12/homeworknode#readme"
+}
