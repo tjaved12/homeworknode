@@ -4,7 +4,7 @@
   "description": "readme",
   "main": "index.js",
   "scripts": {
-    "test": "\"yayy\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -16,9 +16,9 @@
     "npm"
   ],
   "author": "Tahmeena",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tjaved12/homeworknode/issues"
+    "url": "https://github.com/tjaved12/homeworknode/"
   },
   "homepage": "https://github.com/tjaved12/homeworknode#readme"
 }
