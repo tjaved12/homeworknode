@@ -9,9 +9,10 @@
 		"JavaScript",
 		"MySQL",
     	# About the Project
-     "Financial literacy"
+     "Financial literacy",
+
 ## Demo
-    ![image](https://user-images.githubusercontent.com/66760710/90885098-f3916d00-e37e-11ea-973c-293472b40c8a.png),
+![image](https://user-images.githubusercontent.com/66760710/90145685-2f5c7f00-dd4e-11ea-8792-cd7727481d80.png)
   
 ## Table of Contents
 
@@ -29,6 +30,6 @@
 
 ## Getting Started
 
-    Go live: "https://github.com/tjaved12/homeworknode#readme",
+    Go live: https://github.com/tjaved12/homeworknode#readme/
 	
 	
