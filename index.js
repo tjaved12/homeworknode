@@ -87,12 +87,12 @@ inquirer.prompt([{
     console.log('Data', data)
 
     return(
-        `# ${data.projectName}
+        `# ${data.projectName},
 
         ## Table of contents
 
-        * ${data.Contents[0]}
-        *  ${data.Contents[1]}
+        *${data.Contents[0]}
+        *${data.Contents[1]}
         
         `
     )
