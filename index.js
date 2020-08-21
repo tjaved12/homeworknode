@@ -1,5 +1,5 @@
 var inquirer = require("inquirer");
-var fs = require('fs');
+var fs = require("fs");
 
 inquirer.prompt([{
         type: "input",
@@ -31,7 +31,7 @@ inquirer.prompt([{
 
     var filename = data.name.toLowerCase().split(' ').join('') + ".json";
 
-    fs.writeFile(filename, JSON.stringify(data, null, '\t'), function (err) {
+    fs.writeFile("README.md", JSON.stringify(data, null, '\t'), function (err) {
 
         if (err) {
             return console.log(err);
