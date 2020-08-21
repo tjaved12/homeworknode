@@ -89,8 +89,11 @@ inquirer.prompt([{
     return(
         `# ${data.projectName}
 
-        * This is list 1
-        * This is list 2
+        ## Table of contents
+
+        * ${data.Contents[0]}
+        *  ${data.Contents[1]}
+        
         `
     )
 
