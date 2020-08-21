@@ -3,7 +3,7 @@ var fs = require("fs");
 
 inquirer.prompt([{
         type: "input",
-        name: "Project 1",
+        name: "projectName",
         message: "What is your Project name?"
     },
     {
@@ -68,7 +68,7 @@ inquirer.prompt([{
 ]).then(function (data) {
 
    
-    fs.writeFile("README.md", "## Introduction"+ JSON.stringify(data, null, '\t'), 
+    fs.writeFile("README.md", getData(data), 
     
     
     function (err) {
@@ -81,3 +81,13 @@ inquirer.prompt([{
 
     });
 });
+
+
+ function getData(data){
+    console.log('Data', data)
+
+    return(
+        `# ${data.projectName}`
+    )
+
+}
