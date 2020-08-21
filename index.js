@@ -82,18 +82,31 @@ inquirer.prompt([{
     });
 });
 
+function getContent(data){
+
+    console.log('content', data)
+
+    data.forEach(element => {
+        return(
+            `* ${element}`
+        )
+    });
+
+}
+
 
  function getData(data){
     console.log('Data', data)
 
     return(
-        `# ${data.projectName},
+        `# ${data.projectName}
 
-        ## Table of contents
+        ## Table of contents     
 
-        *${data.Contents[0]}
-        *${data.Contents[1]}
-        
+        * ${data.Contents[0]}
+
+        ### Demo
+${data.Demo}
         `
     )
 
