@@ -7,6 +7,23 @@ inquirer.prompt([{
         message: "What is your Project name?"
     },
     {
+        type: "checkbox",
+        message: "Table of Contents?",
+        name: "Contents",
+        choices:[
+"About the Project",
+"User Stories",
+"Development Strategy",
+"Demo",
+"User Specifications",
+"Extra Futures/Spefications",
+"End Result",
+"Getting Started",
+"Tech Stack",
+"Licence",
+    ]
+},
+    {
         type: "editor",
         name: "# About the Project",
         message: "What is your Project about, write in 3 sentences?"
@@ -28,7 +45,7 @@ inquirer.prompt([{
     },
     {
         type: "checkbox",
-        message: "What languageswere used for the Project?",
+        message: "What languages were used for the Project?",
         name: "Tech Stack",
         choices: [
             "HTML",
@@ -37,6 +54,7 @@ inquirer.prompt([{
             "MySQL"
         ]
     },
+    
     {
         type: "list",
         message: "What is your preferred method of communication?",
@@ -50,7 +68,10 @@ inquirer.prompt([{
 ]).then(function (data) {
 
    
-    fs.writeFile("README.md", "## Introduction"+ JSON.stringify(data, null, '\t'), function (err) {
+    fs.writeFile("README.md", "## Introduction"+ JSON.stringify(data, null, '\t'), 
+    
+    
+    function (err) {
 
         if (err) {
             return console.log(err);
