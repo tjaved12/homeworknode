@@ -24,12 +24,12 @@ inquirer.prompt([{
     ]
 },
     {
-        type: "editor",
+        type: "input",
         name: "# About the Project",
         message: "What is your Project about, write in 3 sentences?"
     },
     {
-        type: "editor",
+        type: "input",
         name: "# User Story",
         message: "What is your user story, write in 2 sentences?"
     },
@@ -87,7 +87,12 @@ inquirer.prompt([{
     console.log('Data', data)
 
     return(
-        `# ${data.projectName}`
+        `# ${data.projectName}
+
+        * This is list 1
+        * This is list 2
+        `
     )
+
 
 }
