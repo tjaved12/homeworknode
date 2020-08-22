@@ -68,7 +68,7 @@ inquirer.prompt([{
     }
 ]).then(function (data) {
   
-    fs.writeFile("README.md",getTable(data),
+    fs.writeFile("README.md",getTable(data)+'\n'+getImage(data)+'\n'+getUrl(data),
     
     
     function (err) {
