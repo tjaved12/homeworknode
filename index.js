@@ -97,10 +97,11 @@ inquirer.prompt([{
       return(
             `# Table of Contents
              1. ${data.contents[1]}
-             1. ${data.contents[2]}
-             1. ${data.contents[3]}
-             1. ${data.contents[4]}
-             1. ${data.contents[5]}`
+             2. ${data.contents[2]}
+             3. ${data.contents[3]}
+             4. ${data.contents[4]}
+             5. ${data.contents[5]}
+             `
         )};
         function getUrl(data){
             return(
