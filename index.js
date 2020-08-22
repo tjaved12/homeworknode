@@ -1,6 +1,7 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
 
+
 inquirer.prompt([{
         type: "input",
         name: "projectName",
@@ -9,7 +10,7 @@ inquirer.prompt([{
     {
         type: "checkbox",
         message: "Table of Contents?",
-        name: "Contents",
+        name: "contents",
         choices:[
 "About the Project",
 "User Stories",
@@ -25,28 +26,28 @@ inquirer.prompt([{
 },
     {
         type: "input",
-        name: "# About the Project",
+        name: "project",
         message: "What is your Project about, write in 3 sentences?"
     },
     {
         type: "input",
-        name: "# User Story",
+        name: "userStory",
         message: "What is your user story, write in 2 sentences?"
     },
     {
         type: "link",
-        name: "Go live",
+        name: "goLive",
         message: "What is your Project URL?"
     },
     {
         type: "image",
-        name: "Demo",
+        name: "demo",
         message: "Paste an image?"
     },
     {
         type: "checkbox",
         message: "What languages were used for the Project?",
-        name: "Tech Stack",
+        name: "techStack",
         choices: [
             "HTML",
             "CSS",
@@ -58,7 +59,7 @@ inquirer.prompt([{
     {
         type: "list",
         message: "What is your preferred method of communication?",
-        name: "Contact",
+        name: "contact",
         choices: [
             "email",
             "phone",
@@ -66,9 +67,7 @@ inquirer.prompt([{
         ]
     }
 ]).then(function (data) {
-
-   
-    fs.writeFile("README.md", getData(data), 
+    fs.writeFile("README.md",(getProject(data)+ getTable(data) + getImage(data)+ getUrl(data)),
     
     
     function (err) {
@@ -80,35 +79,48 @@ inquirer.prompt([{
         console.log("Success!");
 
     });
+
 });
 
-function getContent(data){
-
-    console.log('content', data)
-
-    data.forEach(element => {
-        return(
-            `* ${element}`
-        )
-    });
-
-}
-
-
- function getData(data){
+ function getProject(data){
     console.log('Data', data)
 
     return(
-        `# ${data.projectName}
+        `# Introduction: ${data.projectName}`
+    )};
+    
+      
+    function getTable(data){
+           
+        return(
+            `# Table of Contents
+             * ${data.contents[0]}
+             * ${data.contents[1]}
+             *  ${data.contents[2]}
+             *  ${data.contents[3]}
+             *  ${data.contents[4]}
+             *  ${data.contents[5]}`
+        )};
+        function getUrl(data){
+       
+    
+            return(
+                `## Demo: ${data.demo}`
+            )}; 
 
-        ## Table of contents     
+        function getImage(data){
+       
+    
+            return(
+                `## Go Live: ${data.goLive}`
+            )};  
 
-        * ${data.Contents[0]}
-
-        ### Demo
-${data.Demo}
-        `
-    )
+        
+    
 
 
-}
+
+
+
+
+  
