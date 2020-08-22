@@ -67,7 +67,8 @@ inquirer.prompt([{
         ]
     }
 ]).then(function (data) {
-    fs.writeFile("README.md",(getProject(data)+ getTable(data) + getImage(data)+ getUrl(data)),
+  
+    fs.writeFile("README.md",getTable(data),
     
     
     function (err) {
@@ -86,35 +87,35 @@ inquirer.prompt([{
     console.log('Data', data)
 
     return(
-        `# Introduction: ${data.projectName}`
+        `# Introduction ${data.projectName}`
     )};
     
       
     function getTable(data){
            
-        return(
+     
+      return(
             `# Table of Contents
-             * ${data.contents[0]}
              * ${data.contents[1]}
-             *  ${data.contents[2]}
-             *  ${data.contents[3]}
-             *  ${data.contents[4]}
-             *  ${data.contents[5]}`
+             * ${data.contents[2]}
+             * ${data.contents[3]}
+             * ${data.contents[4]}
+             * ${data.contents[5]}`
         )};
         function getUrl(data){
-       
-    
             return(
-                `## Demo: ${data.demo}`
-            )}; 
+                `## Go Live: ${data.goLive}`
+            )};  
+  
 
         function getImage(data){
        
     
             return(
-                `## Go Live: ${data.goLive}`
-            )};  
-
+                `## Demo: ${data.demo}`
+           
+  
+                )}; 
         
     
 
