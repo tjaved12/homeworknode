@@ -94,9 +94,9 @@ function getTable(data) {
 
     console.log(lis)
 
-    //let joinedLi = lis.join('\n')
+    let joinedLi = lis.join('\n')
 
-    return (`## Table of Contents` + '\n' + lis.join('\n'))
+    return joinedLi
 };
 
 function getDesc(data) {

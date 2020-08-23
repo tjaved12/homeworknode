@@ -1,5 +1,4 @@
 # Project Name: n
-## Table of Contents
 1 About the Project
 2 User Stories
 3 Development Strategy
