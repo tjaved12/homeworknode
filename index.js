@@ -89,7 +89,7 @@ function getTable(data) {
     let i = 0
     let lis = data.contents.map(content => {
         i++
-        return `${i} ${content}`
+        return `* ${content}`
     })
 
     console.log(lis)

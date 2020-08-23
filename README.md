@@ -1,21 +1,21 @@
 # Project Name: n
 ## Table of Contents
-1 About the Project
-2 User Stories
-3 Development Strategy
-4 Demo
-5 User Specifications
-6 Extra Futures/Spefications
-7 End Result
-8 Getting Started
-9 Tech Stack
-10 Licence
+* About the Project
+* User Stories
+* Development Strategy
+* Demo
+* User Specifications
+* Extra Futures/Spefications
+* End Result
+* Getting Started
+* Tech Stack
+* Licence
 ## About The Project
 
 ## User Story
 
 ## Demo:
-a
+
 ## Go Live:
 
 ## Tech Stack
