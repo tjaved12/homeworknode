@@ -11,19 +11,19 @@ inquirer.prompt([{
         type: "checkbox",
         message: "Table of Contents?",
         name: "contents",
-        choices:[
-"About the Project",
-"User Stories",
-"Development Strategy",
-"Demo",
-"User Specifications",
-"Extra Futures/Spefications",
-"End Result",
-"Getting Started",
-"Tech Stack",
-"Licence",
-    ]
-},
+        choices: [
+            "About the Project",
+            "User Stories",
+            "Development Strategy",
+            "Demo",
+            "User Specifications",
+            "Extra Futures/Spefications",
+            "End Result",
+            "Getting Started",
+            "Tech Stack",
+            "Licence",
+        ]
+    },
     {
         type: "input",
         name: "project",
@@ -55,74 +55,94 @@ inquirer.prompt([{
             "MySQL"
         ]
     },
-    
-    {
-        type: "list",
-        message: "What is your preferred method of communication?",
-        name: "contact",
-        choices: [
-            "email",
-            "phone",
-            "telekinesis"
-        ]
-    }
+
+
 ]).then(function (data) {
-  
-    fs.writeFile("README.md",getTable(data)+'\n'+getImage(data)+'\n'+getUrl(data),
-    
-    
-    function (err) {
 
-        if (err) {
-            return console.log(err);
-        }
+    fs.writeFile("README.md", getProject(data) + '\n' + getTable(data) + '\n' + getDesc(data) + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
+    '\n' + getUrl(data)+'\n'+ getTech(data),
 
-        console.log("Success!");
 
-    });
+        function (err) {
+
+            if (err) {
+                return console.log(err);
+            }
+
+            console.log("Success!");
+
+        });
 
 });
 
- function getProject(data){
+function getProject(data) {
     console.log('Data', data)
 
-    return(
-        `# Introduction ${data.projectName}`
-    )};
-    
-      
-    function getTable(data){
-           
-     
-      return(
-            `# Table of Contents
-             1. ${data.contents[1]}
-             2. ${data.contents[2]}
-             3. ${data.contents[3]}
-             4. ${data.contents[4]}
-             5. ${data.contents[5]}
-             `
-        )};
-        function getUrl(data){
-            return(
-                `## Go Live: ${data.goLive}`
-            )};  
-  
-
-        function getImage(data){
-       
-    
-            return(
-                `## Demo: ${data.demo}`
-           
-  
-                )}; 
-        
-    
+    return (
+        `# Project Name: ${data.projectName}`
+    )
+};
 
 
+function getTable(data) {
+
+    let i = 0
+    let lis = data.contents.map(content => {
+        i++
+        return `${i} ${content}`
+    })
+
+    console.log(lis)
+
+    let joinedLi = lis.join('\n')
+
+    return (`## Table of Contents` + '\n' + joinedLi)
+};
+
+function getDesc(data) {
+let project= data.project
+    return (
+        `## About The Project`+'\n' +project
+
+    )
+};
+
+function getStory(data) {
+    let story= data.userStory
+    return (
+        `## User Story`+'\n' + story
+
+    )
+};
 
 
+function getImage(data) {
+let demo=data.demo
+    return (
+        `## Demo:`+'\n'+ demo
+
+    )
+};
 
 
-  
+function getUrl(data) {
+    let live=data.goLive
+    return (
+        `## Go Live:`+'\n'+live
+    )
+};
+
+function getTech(data) {
+
+    let i = 0
+    let lis = data.techStack.map(content => {
+        i++
+        return `${i} ${content}`
+    })
+
+    console.log(lis)
+
+    let joinedLi = lis.join('\n')
+
+    return (`## Tech Stack` + '\n' + joinedLi)
+};
