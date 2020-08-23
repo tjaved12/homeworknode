@@ -96,7 +96,7 @@ function getTable(data) {
 
     let joinedLi = lis.join('\n')
 
-    return (`## Table of Contents` + '\n' + joinedLi)
+    return (`## Table of Contents` + '\n' + lis)
 };
 
 function getDesc(data) {
