@@ -1,6 +1,4 @@
-# Project Name: N
-# Project Badge
-https://img.shields.io/badge/GitHub-Profile-blueviolet?style=plastic&logo=appveyor
+# Project Name: 
 ## About The Project
 
 ## Table of Contents
@@ -12,3 +10,5 @@ undefined
 ## Go Live:
 
 ## Tests
+
+#### Project Badge

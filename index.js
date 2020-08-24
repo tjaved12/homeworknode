@@ -66,14 +66,14 @@ inquirer.prompt([{
         ]
     },
     {
-        type: "ckeckbox",
+        type: "checkbox",
         message: "What contribution guidelines are followed?",
         name: "contribution",
         choices: [
-            "Single-purpose commits for related changes.",
-            "If fixing two issues, making two commits.",
-            "Test the application before each commit.",
-            "Never comit the half-done work.",
+            "Single-purpose commits for related changes",
+            "If fixing two issues, making two commits",
+            "Test the application before each commit",
+            "Never comit the half-done work",
            
         ]
     },
@@ -104,8 +104,8 @@ inquirer.prompt([{
 
 ]).then(function (data) {
 
-    fs.writeFile("README.md", getProject(data)+ '\n' + getBadge(data) + '\n' + getDesc(data) + '\n' + getTable(data)  + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
-    '\n' + getUrl(data)+'\n'+ getTechstack(data),
+    fs.writeFile("README.md", getProject(data)+ '\n' + getDesc(data) + '\n' + getTable(data)  + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
+    '\n' + getUrl(data)+'\n'+ getTechstack(data)+'\n' + getBadge(data),
 
 
         function (err) {
@@ -121,17 +121,17 @@ inquirer.prompt([{
 });
 
 function getProject(data) {
-    console.log('Data', data)
+
 
     return (
         `# Project Name: ${data.projectName}`
     )
 };
 function getBadge(data) {
-    console.log('Data', data)
+   
 let badge=data.badge
     return (
-        `# Project Badge`+'\n'+ badge
+        `#### Project Badge`+'\n'+ badge
     )
 };
 
@@ -143,8 +143,7 @@ function getTable(data) {
         return `* ${content}`
     })
 
-    console.log(lis)
-
+ 
     let joinedLi = lis.join("\n")
 
     return (`## Table of Contents` + '\n' + joinedLi )
@@ -191,7 +190,7 @@ function getTechstack(data) {
         return `* ${content}`
     })
 
-    console.log(lis)
+  
 
     let joinedLi = lis.join('\n')
 
