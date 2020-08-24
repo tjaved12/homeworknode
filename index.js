@@ -129,9 +129,9 @@ function getProject(data) {
 };
 function getBadge(data) {
     console.log('Data', data)
-
+let badge=data.badge
     return (
-        `# Project Badge: ${data.badge}`
+        `# Project Badge`+'\n'+ badge
     )
 };
 
