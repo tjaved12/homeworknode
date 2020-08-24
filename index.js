@@ -3,9 +3,20 @@ var fs = require("fs");
 
 
 inquirer.prompt([{
+    
         type: "input",
         name: "projectName",
-        message: "What is your Project name?"
+        message: "What is your Project Title?"
+    },
+    {
+        type: "link",
+        name: "badge",
+        message: "What is your Project badge?"
+    },
+    {
+        type: "input",
+        name: "project",
+        message: "What is your Project description, write in 3 sentences?"
     },
     {
         type: "checkbox",
@@ -24,15 +35,12 @@ inquirer.prompt([{
             "Licence",
         ]
     },
+  
+    
     {
         type: "input",
-        name: "project",
-        message: "What is your Project about, write in 3 sentences?"
-    },
-    {
-        type: "input",
-        name: "userStory",
-        message: "What is your user story, write in 2 sentences?"
+        name: "usage",
+        message: "What is the usage of this app?"
     },
     {
         type: "link",
@@ -44,9 +52,45 @@ inquirer.prompt([{
         name: "demo",
         message: "Paste an image?"
     },
+    
     {
         type: "checkbox",
-        message: "What languages were used for the Project?",
+        message: "What is the License used?",
+        name: "license",
+        choices: [
+            "ISC",
+            "MIT",
+            "Rutgers",
+            "None",
+           
+        ]
+    },
+    {
+        type: "ckeckbox",
+        message: "What contribution guidelines are followed?",
+        name: "contribution",
+        choices: [
+            "Single-purpose commits for related changes.",
+            "If fixing two issues, making two commits.",
+            "Test the application before each commit.",
+            "Never comit the half-done work.",
+           
+        ]
+    },
+    {
+        type: "checkbox",
+        message: "Test Instructions to follow?",
+        name: "tests",
+        choices: [
+            "correct format for link url",
+            "correct format for image paste",
+            "list format",
+            "Header format"
+        ]
+    },
+    {
+        type: "checkbox",
+        message: "What languages the Project used?",
         name: "techStack",
         choices: [
             "HTML",
@@ -57,10 +101,11 @@ inquirer.prompt([{
     },
 
 
+
 ]).then(function (data) {
 
-    fs.writeFile("README.md", getProject(data) + '\n' + getTable(data) + '\n' + getDesc(data) + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
-    '\n' + getUrl(data)+'\n'+ getTech(data),
+    fs.writeFile("README.md", getProject(data)+ '\n' + getBadge(data) + '\n' + getDesc(data) + '\n' + getTable(data)  + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
+    '\n' + getUrl(data)+'\n'+ getTechstack(data),
 
 
         function (err) {
@@ -82,7 +127,13 @@ function getProject(data) {
         `# Project Name: ${data.projectName}`
     )
 };
+function getBadge(data) {
+    console.log('Data', data)
 
+    return (
+        `# Project Badge: ${data.badge}`
+    )
+};
 
 function getTable(data) {
 
@@ -108,9 +159,9 @@ let project= data.project
 };
 
 function getStory(data) {
-    let story= data.userStory
+    let story= data.install
     return (
-        `## User Story`+'\n' + story
+        `## Installation`+'\n' + story
 
     )
 };
@@ -132,17 +183,17 @@ function getUrl(data) {
     )
 };
 
-function getTech(data) {
+function getTechstack(data) {
 
     let i = 0
     let lis = data.techStack.map(content => {
         i++
-        return `${i} ${content}`
+        return `* ${content}`
     })
 
     console.log(lis)
 
     let joinedLi = lis.join('\n')
 
-    return (`## Tech Stack` + '\n' + joinedLi)
+    return (`## Tests` + '\n' + joinedLi)
 };
