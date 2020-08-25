@@ -1,4 +1,5 @@
 # Title: Node README
+### Licence : [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ## About The Project
 The task is to create a command-line application that dynamically generates a professional README.md from a user’s input using the Inquirer Package.
 ## Table of Contents
@@ -15,13 +16,11 @@ The task is to create a command-line application that dynamically generates a pr
 ## Usage
 Run node index.js in the command line. The user will be presented with several questions for inputting necessary elements towards the README file. Once all elements have been properly inputted, a README file will be generated.
 ## Installation
-npm i iquirer
+npm i inquirer
 ## End Result
 ![image](https://user-images.githubusercontent.com/66760710/91214151-adbb0880-e6e0-11ea-8b35-d8bd05eb9256.png)
 ## Go Live 
 https://tjaved12.github.io/homeworknode/
-## License 
-ISC,MIT,Rutgers,None
 ## Contribution Guidelines
 * Single-purpose commits for related changes
 * If fixing two issues, making two commits
@@ -40,4 +39,3 @@ ISC,MIT,Rutgers,None
 ### Contact:
 tahmeenaowais@yahoo.com
 #### Project Badge
-[![GitHub Badge](https://img.shields.io/badge/GitHub-Profile-blue?style=for-the-badge&logo=appveyor)](https://github.com/tjaved12)

@@ -59,10 +59,10 @@ inquirer.prompt([{
         message: "What is the License used?",
         name: "license",
         choices: [
-            "ISC",
-            "MIT",
-            "Rutgers",
+            "Boost",
             "None",
+            "Apache",
+            "N/A",
 
         ]
     },
@@ -114,8 +114,8 @@ inquirer.prompt([{
 
 ]).then(function (data) {
 
-    fs.writeFile("README.md", getProject(data) + '\n' + getDesc(data) + '\n' + getTable(data)  + '\n' + getUsage(data) +'\n' + getInstall(data) +
-        '\n' + getImage(data) +'\n' + getUrl(data)+'\n' + getLicense(data) + '\n' + getContribution(data) +'\n'+ getTests(data)+ 
+    fs.writeFile("README.md", getProject(data) +'\n' + getLicense(data)+ '\n' + getDesc(data) + '\n' + getTable(data)  + '\n' + getUsage(data) +'\n' + getInstall(data) +
+        '\n' + getImage(data) +'\n' + getUrl(data) + '\n' + getContribution(data) +'\n'+ getTests(data)+ 
          '\n' + getTechstack(data) + '\n' + getQuestion(data)+ '\n'+ getBadge(data),
 
 
@@ -137,6 +137,23 @@ function getProject(data) {
     )
 };
 
+function getLicense(data) {
+    let license = data.license
+    console.log(license)
+    if (license =="Apache") {
+        let badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+           
+    return (
+        `### Licence : ` + badge
+    )
+
+    } else {
+        return(
+        `### Licence : ` + `[![License](https://img.shields.io/badge/License-Boost%201.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)`
+         ) }
+ 
+    
+};
 function getDesc(data) {
     let project = data.project
     return (
@@ -192,13 +209,6 @@ function getUrl(data) {
     )
 };
 
-function getLicense(data) {
-    let license = data.license
-    return (
-        `## License ` + '\n' + license
-
-    )
-};
 
 function getContribution(data) {
 
