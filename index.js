@@ -3,16 +3,12 @@ var fs = require("fs");
 
 
 inquirer.prompt([{
-    
+
         type: "input",
         name: "projectName",
         message: "What is your Project Title?"
     },
-    {
-        type: "link",
-        name: "badge",
-        message: "What is your Project badge?"
-    },
+
     {
         type: "input",
         name: "project",
@@ -24,24 +20,29 @@ inquirer.prompt([{
         name: "contents",
         choices: [
             "About the Project",
-            "User Stories",
-            "Development Strategy",
-            "Demo",
-            "User Specifications",
-            "Extra Futures/Spefications",
-            "End Result",
+            "Description",
+            "Usage",
             "Getting Started",
+            "End Result",
             "Tech Stack",
             "Licence",
+            "Contribution guidelines",
+            "Tests",
+            "Project Badge",
         ]
     },
-  
-    
+
+
     {
         type: "input",
         name: "usage",
         message: "What is the usage of this app?"
     },
+    {
+    type: "input",
+    name: "install",
+    message: "How to install this app?"
+},
     {
         type: "link",
         name: "goLive",
@@ -52,7 +53,7 @@ inquirer.prompt([{
         name: "demo",
         message: "Paste an image?"
     },
-    
+
     {
         type: "checkbox",
         message: "What is the License used?",
@@ -62,7 +63,7 @@ inquirer.prompt([{
             "MIT",
             "Rutgers",
             "None",
-           
+
         ]
     },
     {
@@ -74,7 +75,19 @@ inquirer.prompt([{
             "If fixing two issues, making two commits",
             "Test the application before each commit",
             "Never comit the half-done work",
-           
+
+        ]
+    },
+
+    {
+        type: "checkbox",
+        message: "What languages the Project used?",
+        name: "techStack",
+        choices: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "MySQL"
         ]
     },
     {
@@ -89,23 +102,21 @@ inquirer.prompt([{
         ]
     },
     {
-        type: "checkbox",
-        message: "What languages the Project used?",
-        name: "techStack",
-        choices: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "MySQL"
-        ]
+        type: "input",
+        name: "questions",
+        message: "Need more info Y/N?"
     },
-
-
+    {
+        type: "link",
+        name: "badge",
+        message: "What is your Project badge?"
+    },
 
 ]).then(function (data) {
 
-    fs.writeFile("README.md", getProject(data)+ '\n' + getDesc(data) + '\n' + getTable(data)  + '\n'+ getStory(data)+ '\n'+ getImage(data) + 
-    '\n' + getUrl(data)+'\n'+ getTechstack(data)+'\n' + getBadge(data),
+    fs.writeFile("README.md", getProject(data) + '\n' + getDesc(data) + '\n' + getTable(data)  + '\n' + getUsage(data) +'\n' + getInstall(data) +
+        '\n' + getImage(data) +'\n' + getUrl(data)+'\n' + getLicense(data) + '\n' + getContribution(data) +'\n'+ getTests(data)+ 
+         '\n' + getTechstack(data) + '\n' + getQuestion(data)+ '\n'+ getBadge(data),
 
 
         function (err) {
@@ -121,17 +132,16 @@ inquirer.prompt([{
 });
 
 function getProject(data) {
-
-
     return (
-        `# Project Name: ${data.projectName}`
+        `# Title: ${data.projectName}`
     )
 };
-function getBadge(data) {
-   
-let badge=data.badge
+
+function getDesc(data) {
+    let project = data.project
     return (
-        `#### Project Badge`+'\n'+ badge
+        `## About The Project` + '\n' + project
+
     )
 };
 
@@ -140,46 +150,83 @@ function getTable(data) {
     let i = 0
     let lis = data.contents.map(content => {
         i++
+        return `* [${content}](#${content.replace(/\s/g , "-").toLowerCase()})`
+    })
+
+
+    let joinedLi = lis.join("\n")
+
+    return (`## Table of Contents` + '\n' + joinedLi)
+};
+
+
+
+function getInstall(data) {
+    let installation = data.install
+    return (
+        `## Installation` + '\n' + installation
+
+    )
+};
+
+function getUsage(data) {
+    let usage = data.usage
+    return (
+        `## Usage` + '\n' + usage
+    )
+};
+
+function getImage(data) {
+    let demo = data.demo
+    return (
+        `## End Result` + '\n' + demo
+
+    )
+};
+
+function getUrl(data) {
+    let live = data.goLive
+    return (
+        `## Go Live ` + '\n' + live
+
+    )
+};
+
+function getLicense(data) {
+    let license = data.license
+    return (
+        `## License ` + '\n' + license
+
+    )
+};
+
+function getContribution(data) {
+
+    let i = 0
+    let lis = data.contribution.map(content => {
+        i++
         return `* ${content}`
     })
 
- 
+
     let joinedLi = lis.join("\n")
 
-    return (`## Table of Contents` + '\n' + joinedLi )
+    return (`## Contribution Guidelines` + '\n' + joinedLi)
 };
 
-function getDesc(data) {
-let project= data.project
-    return (
-        `## About The Project`+'\n' +project
+function getTests(data) {
 
-    )
-};
-
-function getStory(data) {
-    let story= data.install
-    return (
-        `## Installation`+'\n' + story
-
-    )
-};
+    let i = 0
+    let lis = data.tests.map(content => {
+        i++
+        return `* ${content}`
+    })
 
 
-function getImage(data) {
-let demo=data.demo
-    return (
-        `## Demo:`+'\n'+ demo
+    let joinedLi = lis.join('\n')
 
-    )
-};
+    return (`## Tests` + '\n' + joinedLi)
 
-
-function getUrl(data) {
-    let live=data.goLive
-    return (
-        `## Go Live:`+'\n'+live
-    )
 };
 
 function getTechstack(data) {
@@ -190,9 +237,36 @@ function getTechstack(data) {
         return `* ${content}`
     })
 
-  
 
     let joinedLi = lis.join('\n')
 
-    return (`## Tests` + '\n' + joinedLi)
+    return (`## Tech Stack` + '\n' + joinedLi)
+
+};
+
+function getQuestion(data) {
+
+    let question = data.questions
+    console.log(question)
+    if (question =="Y") {
+        let email = "tahmeenaowais@yahoo.com"
+           
+    return (
+        `### Contact:` + '\n' + email
+    )
+
+    } else {
+        return(
+        `### Contact:`+'\n'+ `No Contact info`)
+        }
+ 
+
+};
+
+function getBadge(data) {
+
+    let badge = data.badge
+    return (
+        `#### Project Badge` + '\n' + badge
+    )
 };
