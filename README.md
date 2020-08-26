@@ -38,4 +38,3 @@ https://tjaved12.github.io/homeworknode/
 * MySQL
 ### Contact:
 tahmeenaowais@yahoo.com
-#### Project Badge

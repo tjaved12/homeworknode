@@ -106,17 +106,13 @@ inquirer.prompt([{
         name: "questions",
         message: "Need more info Y/N?"
     },
-    {
-        type: "link",
-        name: "badge",
-        message: "What is your Project badge?"
-    },
+   
 
 ]).then(function (data) {
 
     fs.writeFile("README.md", getProject(data) +'\n' + getLicense(data)+ '\n' + getDesc(data) + '\n' + getTable(data)  + '\n' + getUsage(data) +'\n' + getInstall(data) +
         '\n' + getImage(data) +'\n' + getUrl(data) + '\n' + getContribution(data) +'\n'+ getTests(data)+ 
-         '\n' + getTechstack(data) + '\n' + getQuestion(data)+ '\n'+ getBadge(data),
+         '\n' + getTechstack(data) + '\n' + getQuestion(data),
 
 
         function (err) {
@@ -139,8 +135,7 @@ function getProject(data) {
 
 function getLicense(data) {
     let license = data.license
-    console.log(license)
-    if (license =="Apache") {
+      if (license =="Apache") {
         let badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
            
     return (
@@ -257,7 +252,7 @@ function getTechstack(data) {
 function getQuestion(data) {
 
     let question = data.questions
-    console.log(question)
+   
     if (question =="Y") {
         let email = "tahmeenaowais@yahoo.com"
            
@@ -271,12 +266,4 @@ function getQuestion(data) {
         }
  
 
-};
-
-function getBadge(data) {
-
-    let badge = data.badge
-    return (
-        `#### Project Badge` + '\n' + badge
-    )
 };
