@@ -1,19 +1,20 @@
 var inquirer = require("inquirer");
 var fs = require("fs");
 
-
+//asks questions in the command line
 inquirer.prompt([{
-
+//asks project title
         type: "input",
         name: "projectName",
         message: "What is your Project Title?"
     },
-
+//asks project description
     {
         type: "input",
         name: "project",
         message: "What is your Project description, write in 3 sentences?"
     },
+//asks what user wants in their README and later creates the table of contents based on choices chosen
     {
         type: "checkbox",
         message: "Table of Contents?",
@@ -31,29 +32,32 @@ inquirer.prompt([{
             "Project Badge",
         ]
     },
-
+//asks the user what is the use of their application
 
     {
         type: "input",
         name: "usage",
         message: "What is the usage of this app?"
     },
+//asks the users what dependicies are steps are required to download and use this application
     {
     type: "input",
     name: "install",
     message: "How to install this app?"
 },
+//asks the user for the live project url
     {
         type: "link",
         name: "goLive",
         message: "What is your Project URL?"
     },
+//asks the user to paste an image url to be displayed in the README
     {
         type: "image",
         name: "demo",
         message: "Paste an image?"
     },
-
+//asks the user what license they are using, creates a badge on the README based on the response
     {
         type: "checkbox",
         message: "What is the License used?",
@@ -66,6 +70,7 @@ inquirer.prompt([{
 
         ]
     },
+//asks what contribution guidelines are followed
     {
         type: "checkbox",
         message: "What contribution guidelines are followed?",
@@ -78,7 +83,7 @@ inquirer.prompt([{
 
         ]
     },
-
+//asks what languages the project uses
     {
         type: "checkbox",
         message: "What languages the Project used?",
@@ -90,6 +95,7 @@ inquirer.prompt([{
             "MySQL"
         ]
     },
+//asks what test instructions user of the app should follow
     {
         type: "checkbox",
         message: "Test Instructions to follow?",
@@ -101,15 +107,16 @@ inquirer.prompt([{
             "Header format"
         ]
     },
+//asks if the creator wants their contact info on the README to answer any questions a user of the app may have
     {
         type: "input",
         name: "questions",
         message: "Need more info Y/N?"
     },
    
+//formats and writes user input data in the README.md file 
 
 ]).then(function (data) {
-
     fs.writeFile("README.md", getProject(data) +'\n' + getLicense(data)+ '\n' + getDesc(data) + '\n' + getTable(data)  + '\n' + getUsage(data) +'\n' + getInstall(data) +
         '\n' + getImage(data) +'\n' + getUrl(data) + '\n' + getContribution(data) +'\n'+ getTests(data)+ 
          '\n' + getTechstack(data) + '\n' + getQuestion(data),
@@ -126,12 +133,13 @@ inquirer.prompt([{
         });
 
 });
-
+//writes app title in README.md
 function getProject(data) {
     return (
         `# Title: ${data.projectName}`
     )
 };
+//creates app license badge in README.md
 
 function getLicense(data) {
     let license = data.license
@@ -149,6 +157,8 @@ function getLicense(data) {
  
     
 };
+//writes app description in README.md
+
 function getDesc(data) {
     let project = data.project
     return (
@@ -156,6 +166,7 @@ function getDesc(data) {
 
     )
 };
+//creates app table fo contents in README.md
 
 function getTable(data) {
 
@@ -172,6 +183,7 @@ function getTable(data) {
 };
 
 
+//writes app dependencies and installation procedures in README.md
 
 function getInstall(data) {
     let installation = data.install
@@ -180,6 +192,7 @@ function getInstall(data) {
 
     )
 };
+//writes app use and real world application in README.md
 
 function getUsage(data) {
     let usage = data.usage
@@ -187,6 +200,7 @@ function getUsage(data) {
         `## Usage` + '\n' + usage
     )
 };
+//pastes app image in README.md
 
 function getImage(data) {
     let demo = data.demo
@@ -195,6 +209,7 @@ function getImage(data) {
 
     )
 };
+//writes app live url in README.md
 
 function getUrl(data) {
     let live = data.goLive
